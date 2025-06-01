@@ -1,0 +1,158 @@
+@import "macchiato.css";
+
+* {
+  font-family: "NotoSans Nerd Font";
+  font-size: 18px;
+}
+
+window#waybar {
+  background-color: @base;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+tooltip {
+  background-color: @base;
+  color: @text;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px @rosewater;
+}
+
+/* you can set a style on hover for any module like this */
+#custom-notification:hover,
+#clock:hover,
+#language:hover,
+#battery:hover,
+#network:hover,
+#power-profiles-daemon:hover,
+#pulseaudio:hover {
+  background-color: @surface2;
+}
+
+#workspaces button {
+  padding: 0 5px;
+}
+
+#workspaces button:hover {
+  background-color: @surface2;
+  box-shadow: inset 0 -3px @lavender;
+}
+
+#workspaces button.focused {
+  background-color: @lavender;
+  box-shadow: inset 0 -3px @lavender;
+}
+
+#workspaces button.active {
+  box-shadow: inset 0 -3px @lavender;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+}
+
+#tray {
+  padding-right: 0px;
+}
+
+#clock,
+#battery,
+#network,
+#language,
+#custom-notification,
+#power-profiles-daemon,
+#pulseaudio {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pulseaudio {
+  color: @mauve;
+}
+
+#custom-notification {
+  color: @teal;
+}
+
+#power-profiles-daemon {
+  color: @blue;
+  font-size: 20px;
+}
+
+#language {
+  color: @peach;
+}
+
+#network {
+  color: @yellow;
+}
+
+#temperature {
+  color: @sky;
+}
+
+#battery {
+  color: @green;
+}
+
+#clock {
+  color: @flamingo;
+}
+
+#window {
+  color: @text;
+}
+
+.modules-right,
+.modules-left,
+.modules-center {
+  border-radius: 15px;
+}
+
+.modules-right {
+  padding: 0 10px;
+}
+
+.modules-left {
+  padding: 0 5px;
+}
+
+.modules-center {
+  padding: 0 0px;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @sapphire;
+}
+
+@keyframes blink {
+  to {
+    color: #000000;
+  }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+  background-color: @red;
+  color: @rosewater;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
