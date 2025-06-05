@@ -145,8 +145,7 @@
     "format": "{format_source}",
     "format-source": "",
     "format-source-muted": "",
-    "on-click": "pavucontrol -t 2",
-    "tooltip-format": "Input: {volume}%"
+    "on-click": "pavucontrol -t 2"
   },
   
   "power-profiles-daemon": {
