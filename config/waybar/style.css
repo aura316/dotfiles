@@ -78,41 +78,30 @@ button:hover {
   padding-right: 5px;
 }
 
+#custom-sep {
+  color: @lavender;
+}
+
+
+#workspaces button, 
+#window,
+#clock {
+  color: @teal;
+}
+
+
 #pulseaudio {
   color: @mauve;
 }
 
-#custom-notification {
-  color: @teal;
-}
-
-#power-profiles-daemon {
-  color: @blue;
-  font-size: 20px;
-}
-
-#language {
-  color: @peach;
-}
-
-#network {
+#network,
+#custom-arch-sys-updates {
   color: @yellow;
 }
 
-#temperature {
-  color: @sky;
-}
-
-#battery {
-  color: @green;
-}
-
-#clock {
-  color: @flamingo;
-}
-
-#window {
-  color: @text;
+#language,
+#custom-notification {
+  color: @peach;
 }
 
 .modules-right,
@@ -133,8 +122,11 @@ button:hover {
   padding: 0 0px;
 }
 
+#power-profiles-daemon,
+#battery,
 #battery.charging,
 #battery.plugged {
+  font-size: 22px;
   color: @sapphire;
 }
 

@@ -31,12 +31,12 @@ yay -S ly
 # Necessary packages
 echo "Installing WM packages..."
 yay -S  uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
-        waybar rofi-wayland swaync wl-clipboard clipse \
+        waybar rofi-wayland swaync wl-clipboard clipse pavucontrol \
         pfetch brightnessctl playerctl power-profiles-daemon \
         xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
         thunar thunar-volman gvfs tumbler \
         bluez bluez-utils blueman \
-        google-chrome code \
+        google-chrome code rclone \
         system76-scheduler
 
 # GTK theme/icons
