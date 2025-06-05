@@ -1,0 +1,7 @@
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export LIBVA_DRIVER_NAME=nvidia
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export NVD_BACKEND=direct
+export GDK_SCALE=1
+export XCURSOR_THEME=Vimix-white-cursors
+export XCURSOR_SIZE=28
