@@ -19,6 +19,10 @@ if [ "$NVIDIA" = true ] ; then
     yay -S nvidia nvidia-settings nvidia-util egl-wayland libva-nvidia-driver
 fi
 
+
+# AMD specific
+#yay -S amdvlk
+
 # Update system packages
 echo "Updating system packages..."
 yay -Syu
@@ -31,13 +35,13 @@ yay -S ly
 # Necessary packages
 echo "Installing WM packages..."
 yay -S  uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
-        waybar rofi-wayland swaync wl-clipboard clipse pavucontrol \
-        pfetch brightnessctl playerctl power-profiles-daemon \
+        waybar rofi-wayland rofimoji wtype wl-clipboard clipse swaync pavucontrol  \
+        fastfetch brightnessctl playerctl power-profiles-daemon \
         xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
         thunar thunar-volman gvfs tumbler \
         bluez bluez-utils blueman \
         google-chrome code rclone \
-        system76-scheduler
+        system76-scheduler \
 
 # GTK theme/icons
 echo "Installing GTK theme, icons and cursor..."
@@ -66,8 +70,14 @@ ln -sf $DIR/../config/kitty ~/.config/
 ln -sf $DIR/../config/rofi ~/.config/
 ln -sf $DIR/../config/swaync ~/.config/
 ln -sf $DIR/../config/waybar ~/.config/
+ln -sf $DIR/../config/uwsm ~/.config/
+ln -sf $DIR/../config/fastfetch ~/.config/
 
-echo "Completed! Next steps:" \
+
+echo "Completed! Next steps (do these in a new shell):" \
       " - Set GTK themes (catppuccin macchiato theme / light vimix cursor / papirus-dark icon)" \
+      " - Configure rclone for gdrive sync" \
       " - Configure monitors: https://wiki.hyprland.org/Configuring/Monitors/" \
+      " - Run setup_flatpaks to install flatpaks" \
+      " - Check flatseal permissions"
 

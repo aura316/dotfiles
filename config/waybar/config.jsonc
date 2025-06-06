@@ -45,8 +45,9 @@
   "hyprland/language": {
     "format": "  {}",
     "format-pt": "pt-PT",
-    "format-en": "en-US",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    "format-us-intl": "en-US",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+    "exec": "hyprctl devices | grep 'active keymap' | awk -F': ' '{print $2}'"
   },
   
   "tray": {

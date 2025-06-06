@@ -2,13 +2,12 @@
 @import "catppuccin-mocha"
 
 * {
-  font: "Noto Sans Regular 14";
   b-radius: 6px;
-  g-padding: 8px;
+  g-padding: 4px;
   g-spacing: 10px;
-  g-margin: 0;
+  g-margin: 2px;
   w-border: 2px solid;
-  w-padding: 12px;
+  w-padding: 6px;
 
   selected-active-foreground:  @background;
   lightfg:                     @text;
@@ -21,7 +20,6 @@
   normal-background:           @background;
   selected-urgent-background:  @red;
   alternate-active-background: @lightbg;
-  spacing:                     2;
   alternate-normal-foreground: @foreground;
   urgent-background:           @background;
   selected-normal-foreground:  @lightbg;
@@ -89,7 +87,7 @@ element-text {
 }
 element-icon {
     background-color: transparent;
-    size:             1.0000em ;
+    size:             1.2000em ;
     cursor:           inherit;
     text-color:       inherit;
 }
@@ -170,7 +168,8 @@ prompt {
     text-color: @normal-foreground;
 }
 configuration {
-    modi: "drun";
+    modi: "drun,filebrowser,window,run";
     show-icons: true;
-    display-drun: "";
+    display-drun: "🐇 ";
+    font: "Noto Sans Regular 14";
 }
