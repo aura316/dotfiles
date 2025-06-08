@@ -38,7 +38,7 @@
     "show-special": true,
     "sort-by-number": true,
     "format-icons": {
-      "magic": "󱩢"
+      "bnuuy": "󱩢"
     }
   },
   
@@ -190,7 +190,7 @@
   },
 
   "custom/sep": {
-    "format": "|",
+    "format": "",
     "tooltip": false
   }
 }

@@ -3,7 +3,7 @@
 # Steam installed as a system library alongside gamescope so they dont run into sandboxing issues
 # https://wiki.archlinux.org/title/Steam
 yay -S steam \
-       ttf-liberations \
+       ttf-liberation \
        gamescope \
        vulkan-tools \
 

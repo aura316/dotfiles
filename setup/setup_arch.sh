@@ -41,7 +41,7 @@ yay -S  uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hypr
         thunar thunar-volman gvfs tumbler \
         bluez bluez-utils blueman \
         google-chrome code rclone \
-        system76-scheduler \
+        scx-scheds \
 
 # GTK theme/icons
 echo "Installing GTK theme, icons and cursor..."
@@ -58,7 +58,7 @@ yay -S flatpak
 
 # Enable systemd services (managed by uwsm)
 echo "Enabling system services..."
-sudo systemctl enable bluetooth ly power-profiles-daemon
+sudo systemctl enable bluetooth ly power-profiles-daemon scx
 echo "Enabling user services..."
 systemctl --user enable hypridle hyprpaper swaync waybar
 
@@ -79,5 +79,6 @@ echo "Completed! Next steps (do these in a new shell):" \
       " - Configure rclone for gdrive sync" \
       " - Configure monitors: https://wiki.hyprland.org/Configuring/Monitors/" \
       " - Run setup_flatpaks to install flatpaks" \
-      " - Check flatseal permissions"
+      " - Check flatseal permissions" \
+      " - Change /etc/default/scx scheduler to scx_lavd and uncheck flags"
 
