@@ -21,11 +21,11 @@ yay -Syu
 # Display manager
 # https://wiki.archlinux.org/title/Greetd
 # border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=redecho "Installing DM..."
-yay -S ly
+yay -S --needed ly
 
 # Necessary packages
 echo "Installing WM packages..."
-yay -S  uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
+yay -S --needed uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
         waybar rofi-wayland rofimoji wtype wl-clipboard clipse swaync pavucontrol  \
         fastfetch brightnessctl playerctl power-profiles-daemon \
         xdg-desktop-portal xdg-desktop-portal-gtk gnome-keyring \
@@ -37,17 +37,17 @@ yay -S  uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hypr
 
 # GTK and QT theme/icons
 echo "Installing GTK theme, icons and cursor..."
-yay -S nwg-look qt6ct catppuccin-gtk-theme-mocha vimix-cursors papirus-icon-theme
+yay -S --needed nwg-look qt6ct catppuccin-gtk-theme-mocha vimix-cursors papirus-icon-theme
 
 
 # Fonts
 echo "Installing fonts..."
-yay -S ttf-noto-nerd ttf-cascadia-code-nerd ttf-cascadia-code noto-fonts noto-fonts-cjk noto-fonts-emoji
+yay -S --needed ttf-noto-nerd ttf-cascadia-code-nerd ttf-cascadia-code noto-fonts noto-fonts-cjk noto-fonts-emoji
 
 # Flatpak
 # https://wiki.archlinux.org/title/Flatpak
 echo "Installing flatpak..."
-yay -S flatpak
+yay -S --needed flatpak
 
 # Enable systemd services (managed by uwsm)
 echo "Enabling system services..."
@@ -70,11 +70,14 @@ ln -sfn $DIR/config/zshrc ~/.zshrc
 ln -sfn $DIR/config/bin ~/.local/bin
 
 
-echo "Completed! Next steps (do these in a new shell):" \
-      " - Set GTK themes (catppuccin macchiato theme / light vimix cursor / papirus-dark icon)" \
-      " - Configure rclone for gdrive sync" \
-      " - Configure monitors: https://wiki.hyprland.org/Configuring/Monitors/" \
-      " - Run setup_flatpaks to install flatpaks" \
-      " - Check flatseal permissions" \
-      " - Change /etc/default/scx scheduler to scx_lavd and uncheck flags"
+echo
+echo
+echo Completed!
+echo "Next steps (do these in a new shell):"
+echo " - Set GTK themes (catppuccin macchiato theme / light vimix cursor / papirus-dark icon)"
+echo " - Configure rclone for gdrive sync"
+echo " - Configure monitors: https://wiki.hyprland.org/Configuring/Monitors/"
+echo " - Run setup_flatpaks to install flatpaks"
+echo " - Check flatseal permissions"
+echo " - Change /etc/default/scx scheduler to scx_lavd and uncheck flags"
 
