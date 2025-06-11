@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Function to display usage
+usage() {
+  echo "Usage: $(basename "$0") /path/to/image"
+  echo "Sets the given image as wallpaper using hyprpaper."
+  exit 1
+}
+
+# Check for help flag
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+fi
+
+# Ensure an argument is provided
+if [[ -z "$1" ]]; then
+  echo "Error: No file provided."
+  usage
+fi
+
+# Expand tilde (~) and resolve full path
+WALLPAPER=$(realpath -e "$1" 2>/dev/null)
+
+# Check if file exists and is an image
+if [[ ! -f "$WALLPAPER" ]]; then
+  echo "Error: File does not exist: $1"
+  exit 1
+fi
+
+# Optional: Check if it's an image file
+if ! file "$WALLPAPER" | grep -qiE 'image|bitmap'; then
+  echo "Error: File is not a valid image: $WALLPAPER"
+  exit 1
+fi
+
+# Copy to hyprpaper config location
+cp -f "$WALLPAPER" ~/.bg
+echo "Wallpaper copied to ~/.bg"
+
+# Restart hyprpaper
+if systemctl --user restart hyprpaper; then
+  echo "New wallpaper set: $WALLPAPER"
+else
+  echo "Failed to restart hyprpaper..."
+  exit 1
+fi

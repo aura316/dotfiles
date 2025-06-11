@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-# If not using NVidia GPU put this flag to false
-NVIDIA=true
 # Script dir
-DIR=$(dirname -- "$0")
+DIR=$(realpath "$(dirname "$0")/..")
+
+# Directories to create
+echo "Creating directories"
+mkdir -p ~/GDrive
 
 # Check if yay is installed
 if ! command -v yay 2>&1 >/dev/null
@@ -11,17 +13,6 @@ then
     echo "This script requires yay, please make sure it's installed."
     exit 1
 fi
-
-# Nvidia drivers and utils
-# https://wiki.archlinux.org/title/NVIDIA
-if [ "$NVIDIA" = true ] ; then
-    echo "Installing NVidia drivers"
-    yay -S nvidia nvidia-settings nvidia-util egl-wayland libva-nvidia-driver
-fi
-
-
-# AMD specific
-#yay -S amdvlk
 
 # Update system packages
 echo "Updating system packages..."
@@ -37,15 +28,17 @@ echo "Installing WM packages..."
 yay -S  uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
         waybar rofi-wayland rofimoji wtype wl-clipboard clipse swaync pavucontrol  \
         fastfetch brightnessctl playerctl power-profiles-daemon \
-        xdg-desktop-portal-hyprland xdg-desktop-portal-gtk \
+        xdg-desktop-portal xdg-desktop-portal-gtk gnome-keyring \
         thunar thunar-volman gvfs tumbler \
-        bluez bluez-utils blueman \
+        bluez bluez-utils blueman nm-connection-editor\
         google-chrome code rclone \
         scx-scheds \
+        zsh fzf fd zsh-syntax-highlighting zsh-autosuggestions bat \
 
-# GTK theme/icons
+# GTK and QT theme/icons
 echo "Installing GTK theme, icons and cursor..."
-yay -S nwg-look catppuccin-gtk-theme-mocha vimix-cursors papirus-icon-theme
+yay -S nwg-look qt6ct catppuccin-gtk-theme-mocha vimix-cursors papirus-icon-theme
+
 
 # Fonts
 echo "Installing fonts..."
@@ -60,18 +53,21 @@ yay -S flatpak
 echo "Enabling system services..."
 sudo systemctl enable bluetooth ly power-profiles-daemon scx
 echo "Enabling user services..."
-systemctl --user enable hypridle hyprpaper swaync waybar
+systemctl --user enable hypridle hyprpaper swaync waybar hyprpolkitagent
 
 # Symlinking
 echo "Creating symlinks for configs"
-ln -sf $DIR/../config/clipse ~/.config/
-ln -sf $DIR/../config/hypr ~/.config/
-ln -sf $DIR/../config/kitty ~/.config/
-ln -sf $DIR/../config/rofi ~/.config/
-ln -sf $DIR/../config/swaync ~/.config/
-ln -sf $DIR/../config/waybar ~/.config/
-ln -sf $DIR/../config/uwsm ~/.config/
-ln -sf $DIR/../config/fastfetch ~/.config/
+ln -sfn $DIR/config/clipse ~/.config/
+ln -sfn $DIR/config/hypr ~/.config/
+ln -sfn $DIR/config/kitty ~/.config/
+ln -sfn $DIR/config/rofi ~/.config/
+ln -sfn $DIR/config/swaync ~/.config/
+ln -sfn $DIR/config/waybar ~/.config/
+ln -sfn $DIR/config/uwsm ~/.config/
+ln -sfn $DIR/config/fastfetch ~/.config/
+ln -sfn $DIR/config/qt6ct ~/.config/
+ln -sfn $DIR/config/zshrc ~/.zshrc
+ln -sfn $DIR/config/bin ~/.local/bin
 
 
 echo "Completed! Next steps (do these in a new shell):" \

@@ -1,6 +1,10 @@
 {
+  "layer": "top",
   "height": 32,
   "spacing": 10,
+  "exclusive": true,
+  "fixed-center": true,
+
   "modules-left": [
     "hyprland/workspaces",
     "custom/sep",
@@ -16,10 +20,11 @@
     "pulseaudio",
     "pulseaudio#input",
     "network",
+    "bluetooth",
     "custom/arch-sys-updates",
     "power-profiles-daemon",
     "battery",
-    "hyprland/language",
+    // "hyprland/language",
     "custom/notification"
   ],
   
@@ -38,6 +43,7 @@
     "show-special": true,
     "sort-by-number": true,
     "format-icons": {
+      "10": "󰺷",
       "bnuuy": "󱩢"
     }
   },
@@ -115,12 +121,21 @@
   },
   
   "network": {
-    "format-wifi": " ",
-    "format-ethernet": "{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-wifi": "",
+    "format-ethernet": "",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": " ⚠ "
+    "format-disconnected": "󱘖",
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
   },
+
+   "bluetooth": {
+    "format": "{status}",
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
+    "on-click": "blueman-manager"
+   },
   
   "pulseaudio": {
     "format": "{icon}",
@@ -138,7 +153,7 @@
         ""
       ]
     },
-    "on-click": "pavucontrol -t 1",
+    "on-click": "pavucontrol -t 3",
     "tooltip-format": "Output: {volume}%"
   },
 
@@ -146,7 +161,8 @@
     "format": "{format_source}",
     "format-source": "",
     "format-source-muted": "",
-    "on-click": "pavucontrol -t 2"
+    "on-click": "pavucontrol -t 4",
+    "tooltip": false
   },
   
   "power-profiles-daemon": {
@@ -184,8 +200,10 @@
 
   // arch only
   "custom/arch-sys-updates" : {
-    "format": "  {}",
+    "format": " {}",
     "interval": 3600,
+    "tooltip": false,
+    "on-click": "kitty yay -Qu",
     "exec": "pkgs=$(pacman -Qu | wc -l); if [[ $pkgs > 0 ]]; then echo $pkgs; fi"
   },
 

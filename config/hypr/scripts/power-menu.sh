@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Options for rofi menu
 options="Shutdown\nRestart\nSuspend\nLogout"
