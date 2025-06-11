@@ -6,7 +6,6 @@ yay -S steam \
        ttf-liberation \
        gamescope \
        vulkan-tools \
-       gamemode \
 
 # Helper stuff
 # Protontricks, bottles, gamescope, scopebuddy
