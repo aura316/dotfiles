@@ -1,4 +1,16 @@
-# ~/.zshrc
+# ------------------------------------------------------------------------------
+# Plugin paths
+# ------------------------------------------------------------------------------
+# Different distros handle paths differently, adjust accordingly
+# Requires:
+# - zsh-autosuggestions      https://github.com/zsh-users/zsh-autosuggestions
+# - zsh-syntax-highlighting  https://github.com/zsh-users/zsh-syntax-highlighting
+# - fzf                      https://github.com/junegunn/fzf
+
+Z_SYNTAX_PATH=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+Z_AUTO_SUGGEST_PATH=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+Z_FZF_KEYBINDINGS_PATH=/usr/share/fzf/key-bindings.zsh
+Z_FZF_COMPLETION_PATH=/usr/share/fzf/completion.zsh
 
 # ------------------------------------------------------------------------------
 # ENVIRONMENT
@@ -67,18 +79,21 @@ bindkey '^H' backward-kill-word
 # ------------------------------------------------------------------------------
 # FUZZY FINDER (FZF)
 # ------------------------------------------------------------------------------
-# Requires `fzf` to be installed: https://github.com/junegunn/fzf
 
+# This may not be available so
 if command -v fzf >/dev/null 2>&1; then
+# If on an old version of fzf, the zsh source shortcut does not exist, source files directly
+#  source $Z_FZF_COMPLETION_PATH
+#  source $Z_FZF_KEYBINDINGS_PATH
   source <(fzf --zsh)
 fi
 
 _fzf_compgen_path() {
-  fd --glob --hidden --follow --exclude .git "${1:-}" .
+  fd --glob --hidden --follow --exclude .git . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --glob --type d --hidden --follow --exclude .git "${1:-}" .
+  fd --glob --type d --hidden --follow --exclude .git . "$1" 
 }
 
 # Use fd (if available) for faster file finding
@@ -90,9 +105,6 @@ _fzf_compgen_dir() {
 # ------------------------------------------------------------------------------
 # AUTOSUGGESTIONS
 # ------------------------------------------------------------------------------
-# Requires `zsh-autosuggestions`: https://github.com/zsh-users/zsh-autosuggestions
-
-Z_AUTO_SUGGEST_PATH=/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if [ -f "$Z_AUTO_SUGGEST_PATH" ]; then
     source "$Z_AUTO_SUGGEST_PATH"
@@ -126,8 +138,7 @@ git_prompt_info() {
 
 
 # Main prompt
-PROMPT='
-%F{cyan}%n@%m%f %F{yellow}%~%f $(git_prompt_info)
+PROMPT='%F{cyan}%n@%m%f %F{yellow}%~%f $(git_prompt_info)
 %F{cyan}λ%f '
 
 # RPROMPT='%F{242}%*%f'
@@ -159,9 +170,7 @@ please() { sudo "$(fc -ln -1)" }
 # ------------------------------------------------------------------------------
 # SYNTAX HIGHLIGHTING : Must be loaded last, according to the git pages
 # ------------------------------------------------------------------------------
-# Requires `zsh-syntax-highlighting`: https://github.com/zsh-users/zsh-syntax-highlighting
 
-Z_SYNTAX_PATH=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [ -f "$Z_SYNTAX_PATH" ]; then
     source "$Z_SYNTAX_PATH"
 fi

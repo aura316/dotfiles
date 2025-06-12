@@ -11,4 +11,4 @@ then
 fi
 
 echo "Installing NVidia drivers"
-yay -S nvidia nvidia-settings nvidia-util egl-wayland libva-nvidia-driver
+yay -S --needed nvidia nvidia-settings nvidia-util egl-wayland libva-nvidia-driver
