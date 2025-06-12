@@ -88,18 +88,25 @@ if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
 
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#6e738d,spinner:#F4DBD6,hl:#ED8796 \
+--color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
+--color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
+--color=selected-bg:#494D64 \
+--color=border:#6e738d,label:#CAD3F5"
+
+
 _fzf_compgen_path() {
-  fd --glob --hidden --follow --exclude .git . "$1"
+  fd --hidden --follow --exclude .git . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --glob --type d --hidden --follow --exclude .git . "$1" 
+  fd --type d --hidden --follow --exclude .git . "$1" 
 }
-
-# Use fd (if available) for faster file finding
-# export FZF_DEFAULT_COMMAND='[ -f .git/HEAD ] && git ls-files --cached --others --exclude-standard | fzf || find . -type f'
-# command -v fd >/dev/null && export FZF_DEFAULT_COMMAND='fd --type f'
-
 
 
 # ------------------------------------------------------------------------------
@@ -118,6 +125,14 @@ fi
 # Enable colors and prompt substitution
 autoload -Uz colors && colors
 setopt PROMPT_SUBST
+
+# Puts a blank line before every prompt except the first.
+# Done by the first precmd invocation overriding the precmd with a function that calls echo.
+precmd() {
+  precmd() {
+    echo
+  }
+}
 
 # Git info function
 git_prompt_info() {
@@ -151,7 +166,7 @@ alias ls='ls -G --color=auto --group-directories-first'
 alias la='ls -lhA'
 alias ll='ls -lh'
 alias grep='grep --color=auto'
-alias cat='bat --theme=ansi --style=plain'
+alias cat='bat --theme=ansi -pp'
 alias ..='cd ..'
 alias ...='cd ../..'
 

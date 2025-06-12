@@ -21,7 +21,6 @@
     "pulseaudio#input",
     "network",
     "bluetooth",
-    "custom/arch-sys-updates",
     "power-profiles-daemon",
     "battery",
     // "hyprland/language",
@@ -196,15 +195,6 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-  },
-
-  // arch only
-  "custom/arch-sys-updates" : {
-    "format": " {}",
-    "interval": 3600,
-    "tooltip": false,
-    "on-click": "kitty yay -Qu",
-    "exec": "pkgs=$(pacman -Qu | wc -l); if [[ $pkgs > 0 ]]; then echo $pkgs; fi"
   },
 
   "custom/sep": {

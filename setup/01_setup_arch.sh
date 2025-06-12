@@ -28,7 +28,7 @@ echo "Installing WM packages..."
 yay -S --needed uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
         waybar rofi-wayland rofimoji wtype wl-clipboard clipse swaync pavucontrol  \
         fastfetch brightnessctl playerctl power-profiles-daemon \
-        xdg-desktop-portal xdg-desktop-portal-gtk gnome-keyring \
+        xdg-desktop-portal-hyprland xdg-desktop-portal-gtk gnome-keyring \
         thunar thunar-volman gvfs tumbler \
         bluez bluez-utils blueman nm-connection-editor\
         google-chrome code rclone \
