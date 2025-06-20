@@ -88,25 +88,33 @@ if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
 
-export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#6e738d,spinner:#F4DBD6,hl:#ED8796 \
---color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
---color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
---color=selected-bg:#494D64 \
---color=border:#6e738d,label:#CAD3F5"
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type file"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type dir"
 
+export FZF_CTRL_T_OPTS="--preview='fzf-preview {}'"
+export FZF_ALT_C_OPTS="--preview='fzf-preview {}'"
 
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude .git . "$1"
-}
+export FZF_DEFAULT_OPTS="
+--height ~95% \
+--style minimal \
+--preview-window=right:70% \
+--color=fg:#CAD3F5,fg+:#CAD3F5 \
+--color=bg+:#6E738D,selected-bg:#494D64 \
+--color=hl:#ED8796,hl+:#ED8796 \
+--color=prompt:#C6A0F6,pointer:#F4DBD6,marker:#B7BDF8 \
+--color=header:#ED8796,info:#C6A0F6,label:#CAD3F5 \
+--color=spinner:#C6A0F6,border:#6E738D
+"
 
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude .git . "$1" 
-}
+# _fzf_compgen_path() {
+#   fd --hidden --follow --exclude ".git" . "$1"
+# }
+
+# _fzf_compgen_dir() {
+#   fd --type d --hidden --follow --exclude ".git" . "$1"
+# }
 
 
 # ------------------------------------------------------------------------------
@@ -125,14 +133,6 @@ fi
 # Enable colors and prompt substitution
 autoload -Uz colors && colors
 setopt PROMPT_SUBST
-
-# Puts a blank line before every prompt except the first.
-# Done by the first precmd invocation overriding the precmd with a function that calls echo.
-precmd() {
-  precmd() {
-    echo
-  }
-}
 
 # Git info function
 git_prompt_info() {
@@ -172,7 +172,7 @@ alias ...='cd ../..'
 
 # Fun stuff
 alias weather="curl -s 'wttr.in'"
-
+alias hyprpaper-fzf="fzf --preview='fzf-preview {}' | xargs hyprpaper-set"
 # Functions
 please() { sudo "$(fc -ln -1)" }
 

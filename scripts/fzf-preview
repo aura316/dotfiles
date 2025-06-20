@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+target="$1"
+width="${FZF_PREVIEW_COLUMNS:-80}"
+height="${FZF_PREVIEW_LINES:-60}"
+mimetype=$(file --mime-type -b "$target")
+
+case "$mimetype" in
+    inode/directory)
+        tree -C -L 1 "$target"
+        ;;
+    text/*)
+        bat --color=always --theme=ansi -pp "$target"
+        ;;
+    image/*)
+        kitty icat --clear --transfer-mode=memory --stdin=no --unicode-placeholder --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 $target
+        ;;
+    application/json)
+        jq -C . "$target" || bat --color=always --theme=ansi -pp "$target"
+        ;;
+    application/pdf)
+        pdftotext -l 5 -nopgbrk -q -- "$target" - | head -n "$height"
+        ;;
+    *zip* | *rar* | *tar* | *gzip* | *bzip2* | *7z* | *archive*)
+        lsar --long --json stuff.tar.gz | \
+        jq -r '.lsarContents[] | [.XADFileName, .XADFileSize] | @tsv' | \
+        column -t -s $'\t'
+        ;;
+    *)
+        echo Preview for file type \"$mimetype\" unavailable
+esac

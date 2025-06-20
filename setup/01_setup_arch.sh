@@ -33,7 +33,8 @@ yay -S --needed uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpic
         bluez bluez-utils blueman nm-connection-editor\
         google-chrome code rclone \
         scx-scheds \
-        zsh fzf fd zsh-syntax-highlighting zsh-autosuggestions bat \
+        zsh zsh-syntax-highlighting zsh-autosuggestions \
+        fzf fd bat tree catimg jq unarchiver poppler imagemagick xargs
 
 # GTK and QT theme/icons
 echo "Installing GTK theme, icons and cursor..."
@@ -67,7 +68,7 @@ ln -sfn $DIR/config/uwsm ~/.config/
 ln -sfn $DIR/config/fastfetch ~/.config/
 ln -sfn $DIR/config/qt6ct ~/.config/
 ln -sfn $DIR/config/zshrc ~/.zshrc
-ln -sfn $DIR/config/bin ~/.local/bin
+ln -sfn $DIR/scripts ~/.local/
 
 
 echo
@@ -80,4 +81,3 @@ echo " - Configure monitors: https://wiki.hyprland.org/Configuring/Monitors/"
 echo " - Run setup_flatpaks to install flatpaks"
 echo " - Check flatseal permissions"
 echo " - Change /etc/default/scx scheduler to scx_lavd and uncheck flags"
-
