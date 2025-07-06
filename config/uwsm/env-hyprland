@@ -1,2 +1,22 @@
+######## Toolkit backends ########
+export GDK_BACKEND='wayland,x11'
+export SDL_VIDEODRIVER='wayland,x11,windows'
+export CLUTTER_BACKEND='wayland'
+export ELECTRON_OZONE_PLATFORM_HINT='auto'
+
+## QT
+export QT_QPA_PLATFORM='wayland;xcb'
+export QT_QPA_PLATFORMTHEME='qt6ct'
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_WAYLAND_DISABLE_WINDOWDECORATIONS='1'
+
+####### XDG specifications #######
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+
+############# Others #############
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 export HYPRCURSOR_THEME=Vimix-white-cursors
 export HYPRCURSOR_SIZE=28

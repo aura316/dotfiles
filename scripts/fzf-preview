@@ -13,7 +13,11 @@ case "$mimetype" in
         bat --color=always --theme=ansi -pp "$target"
         ;;
     image/*)
-        kitty icat --clear --transfer-mode=memory --stdin=no --unicode-placeholder --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 $target
+        if [[ $TERM == "xterm-kitty" ]]; then
+            kitty icat --clear --transfer-mode=memory --stdin=no --unicode-placeholder --place=${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0 $target
+        else
+            echo "Image preview only available through kitty terminal"
+        fi
         ;;
     application/json)
         jq -C . "$target" || bat --color=always --theme=ansi -pp "$target"
