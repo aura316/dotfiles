@@ -26,7 +26,7 @@ yay -S --needed ly
 # Necessary packages
 echo "Installing WM packages..."
 yay -S --needed uwsm kitty hyprland hyprpaper hypridle hyprlock hyprshot hyprpicker hyprpolkitagent \
-        waybar rofi-wayland rofimoji wtype wl-clipboard clipse swaync pavucontrol  \
+        waybar tofi rofi-wayland rofimoji wtype wl-clipboard clipse swaync pavucontrol  \
         fastfetch brightnessctl playerctl power-profiles-daemon \
         xdg-desktop-portal-hyprland xdg-desktop-portal-gtk gnome-keyring \
         thunar thunar-volman gvfs tumbler \
@@ -62,6 +62,7 @@ ln -sfn $DIR/config/clipse ~/.config/
 ln -sfn $DIR/config/hypr ~/.config/
 ln -sfn $DIR/config/kitty ~/.config/
 ln -sfn $DIR/config/rofi ~/.config/
+ln -sfn $DIR/config/tofi ~/.config/
 ln -sfn $DIR/config/swaync ~/.config/
 ln -sfn $DIR/config/waybar ~/.config/
 ln -sfn $DIR/config/uwsm ~/.config/
