@@ -1,6 +1,0 @@
-## XCURSOR
-export XCURSOR_THEME=Vimix-white-cursors
-export XCURSOR_SIZE=28
-
-## PATH
-export PATH=$HOME/.local/bin:$HOME/.local/scripts:$PATH

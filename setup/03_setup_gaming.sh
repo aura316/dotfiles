@@ -9,7 +9,7 @@ yay -S steam \
 
 # Helper stuff
 # Protontricks, bottles, gamescope, scopebuddy
-flatpak install flathub com.github.Matoking.protontricks net.davidotek.pupgui2
+# flatpak install flathub com.github.Matoking.protontricks net.davidotek.pupgui2
 
 
 # XLM for XIV

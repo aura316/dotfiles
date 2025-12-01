@@ -1,4 +1,4 @@
-@import "macchiato.css";
+@import "adw.css";
 
 * {
   font-family: "NotoSans Nerd Font";
@@ -6,12 +6,12 @@
 }
 
 window#waybar {
-  background: @base-trans;
+  background: @background-transparent;
 }
 
 tooltip {
-  background: @base;
-  color: @text;
+  background: @background-transparent;
+  color: @foreground;
 }
 
 button {
@@ -22,15 +22,8 @@ button {
   border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-  background: inherit;
-  box-shadow: inset 0 -3px @rosewater;
-}
-
 /* you can set a style on hover for any module like this */
-#bluetooth:hover,
-#custom-arch-sys-updates:hover,
+#workspaces button:hover,
 #custom-notification:hover,
 #clock:hover,
 #language:hover,
@@ -38,111 +31,58 @@ button:hover {
 #network:hover,
 #power-profiles-daemon:hover,
 #pulseaudio:hover {
-  background-color: @surface2;
+  background-color: @selection_background;
 }
 
-#workspaces button {
-  padding: 0 5px;
-}
-
-#workspaces button:hover {
-  background-color: @surface2;
-  box-shadow: inset 0 -3px @lavender;
+#workspaces button,
+#window,
+#custom-notification,
+#custom-separator,
+#clock,
+#language,
+#battery,
+#network,
+#power-profiles-daemon,
+#pulseaudio {
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #workspaces button.active {
-  box-shadow: inset 0 -3px @lavender;
+  box-shadow: inset 0 -3px @accent;
 }
 
 #workspaces button.urgent {
   background-color: @red;
 }
 
-#tray {
-  padding-right: 0px;
+@keyframes blink {
+  to {
+    color: @black;
+  }
 }
 
-#bluetooth,
-#custom-arch-sys-updates,
-#clock,
-#battery,
-#network,
-#language,
+/* Make icons slightly larger. Icons are using NF-MD fonts. Same size as tray icons. */
 #custom-notification,
+#battery,
 #power-profiles-daemon,
+#network,
 #pulseaudio {
-  padding-left: 5px;
-  padding-right: 5px;
+  font-size: 22px;
 }
 
 #custom-sep {
-  color: @lavender;
-}
-
-
-#workspaces button, 
-#window,
-#clock {
-  color: @teal;
-}
-
-
-#pulseaudio {
-  color: @mauve;
-}
-
-#network,
-#bluetooth,
-#custom-arch-sys-updates {
-  color: @yellow;
-}
-
-#language,
-#custom-notification {
-  color: @peach;
-}
-
-.modules-right,
-.modules-left,
-.modules-center {
-  border-radius: 15px;
-}
-
-.modules-right {
-  padding: 0 10px;
-}
-
-.modules-left {
-  padding: 0 5px;
-}
-
-.modules-center {
-  padding: 0 0px;
-}
-
-#power-profiles-daemon,
-#battery,
-#battery.charging,
-#battery.plugged {
-  font-size: 22px;
-  color: @sapphire;
-}
-
-@keyframes blink {
-  to {
-    color: #000000;
-  }
+  color:@accent;
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
   background-color: @red;
-  color: @rosewater;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-
-

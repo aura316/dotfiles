@@ -1,0 +1,23 @@
+* {
+    background:                #1d1d20;
+    accent:                    #5bc8af;
+    foreground:                #deddda;
+    selection-background:      #303030;
+    selection-foreground:      #c0bfbc;
+    black:                     #1d1d1d;
+    red:                       #ed333b;
+    green:                     #57e389;
+    yellow:                    #ff7800;
+    blue:                      #62a0ea;
+    magenta:                   #9141ac;
+    cyan:                      #5bc8af;
+    white:                     #deddda;
+    bright-black:              #9a9996;
+    bright-red:                #f66151;
+    bright-green:              #8ff0a4;
+    bright-yellow:             #ffa348;
+    bright-blue:               #99c1f1;
+    bright-magenta:            #dc8add;
+    bright-cyan:               #93ddc2;
+    bright-white:              #f6f5f4;
+}

@@ -1,7 +1,6 @@
 {
   "layer": "top",
   "height": 32,
-  "spacing": 10,
   "exclusive": true,
   "fixed-center": true,
 
@@ -20,13 +19,13 @@
     "pulseaudio",
     "pulseaudio#input",
     "network",
-    "bluetooth",
     "power-profiles-daemon",
     "battery",
-    // "hyprland/language",
     "custom/notification"
   ],
-  
+
+
+  // Hyprland modules
   "hyprland/window": {
     "format": "{}",
     "max-length": 35,
@@ -35,66 +34,45 @@
     },
     "separate-outputs": true
   },
-  
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "show-special": true,
     "sort-by-number": true,
     "format-icons": {
-      "10": "󰺷",
-      "bnuuy": "󱩢"
+      "10": "0",
+      "scratchpad": "󰺿",
+      "bnuuy": "󱩢",
     }
   },
-  
-  "hyprland/language": {
-    "format": "  {}",
-    "format-pt": "pt-PT",
-    "format-us-intl": "en-US",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
-    "exec": "hyprctl devices | grep 'active keymap' | awk -F': ' '{print $2}'"
+
+
+  // Clock
+  "clock": {
+    "tooltip": false,
+    "format": "󰅐 {:%H:%M}"
   },
-  
+  "clock#date": {
+    "format": "󰸗 {:L%a %d %b}",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  },
+
+
+  // System tray
   "tray": {
     "icon-size": 22,
     "spacing": 10
   },
-  
-  "clock": {
-    "tooltip": false,
-    "format": "  {:%H:%M}"
-  },
-  
-  "clock#date": {
-    "format": "  {:L%a %d %b}",
-    "tooltip-format": "<tt>{calendar}</tt>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "on-click-right": "mode",
-      // Colors defined in css
-      "format": {
-        "months": "<span color='#8bd5ca'><b>{}</b></span>",
-        "weekdays": "<span color='#8bd5ca'><b>{}</b></span>",
-        "today": "<span color='#ed8796'><b>{}</b></span>"
-      }
-    },
-    "actions": {
-      "on-click": "mode"
-    },
-    "min-length": 8,
-    "max-length": 28
-  },
 
+
+  // PC monitoring
   "cpu": {
     "format": "  {usage}",
     "tooltip": false
   },
-  
   "memory": {
     "format": "{}  "
   },
-  
   "battery": {
     "states": {
       "warning": 30,
@@ -118,52 +96,9 @@
       ]
     }
   },
-  
-  "network": {
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "󱘖",
-    "tooltip": false,
-    "on-click": "nm-connection-editor"
-  },
 
-   "bluetooth": {
-    "format": "{status}",
-    "format-on": "󰂯",
-    "format-off": "󰂲",
-    "format-connected": "󰂱",
-    "on-click": "blueman-manager"
-   },
-  
-  "pulseaudio": {
-    "format": "{icon}",
-    "format-muted": "",
-    "format-icons": {
-      // "headphone": "",
-      // "hands-free": "",
-      // "headset": "",
-      // "phone": "",
-      // "portable": "",
-      // "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol -t 3",
-    "tooltip-format": "Output: {volume}%"
-  },
 
-  "pulseaudio#input": {
-    "format": "{format_source}",
-    "format-source": "",
-    "format-source-muted": "",
-    "on-click": "pavucontrol -t 4",
-    "tooltip": false
-  },
-  
+  // Power profiles
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip-format": "Power profile: {profile}",
@@ -175,19 +110,56 @@
       "power-saver": "󰾆"
     }
   },
-  
+
+
+  // Networking
+  "network": {
+    "format-wifi": "󰖩",
+    "format-ethernet": "󰈀",
+    // "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "󱘖",
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
+  },
+
+
+  // Audio I/O
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰸈",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "pavucontrol -t 3",
+    "tooltip-format": "Output: {volume}%"
+  },
+
+  "pulseaudio#input": {
+    "format": "{format_source}",
+    "format-source": "󰍬",
+    "format-source-muted": "󰍭",
+    "on-click": "pavucontrol -t 4",
+    "tooltip": false
+  },
+
+
+  // Custom entries
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": ""
+      "notification": "󰂜<span foreground='red'><sup></sup></span>",
+      "none": "󰂜",
+      "dnd-notification": "󰪑<span foreground='red'><sup></sup></span>",
+      "dnd-none": "󰪑",
+      "inhibited-notification": "󰂜<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "󰪑<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": "󰪑"
     },
     "return-type": "json",
     "exec-if": "which swaync-client",

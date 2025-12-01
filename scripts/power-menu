@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 
 options=("Shutdown" "Suspend" "Logout" "Restart")
-[[ -f /boot/EFI/Microsoft/Boot/bootmgfw.efi ]] && options+=("Restart to Windows")
+[[ -f /boot/EFI/Microsoft/Boot/bootmgfw.efi ]] && options+=("Windows")
 
 menu=$(printf "%s\n" "${options[@]}")
 
 lines=${#options[@]}
 
 # Show the rofi menu
-#choice=$(echo -e "$menu" | rofi -dmenu -theme-str "window { width: 300px; } listview { lines: ${lines}; } element-text { horizontal-align: 0.50; } configuration { show-icons: false; } inputbar { enabled: false; }")
-
-# Tofi version
-choice=$(echo -e "$menu" | tofi --prompt-text "🧛🏻‍♀️")
-
+choice=$(echo -e "$menu" | rofi -dmenu -theme-str "window { width: 150px; } listview { lines: ${lines}; } element-text { horizontal-align: 0.50; } configuration { show-icons: false; } inputbar { enabled: false; }")
 
 case "$choice" in
     Shutdown)
@@ -27,7 +23,7 @@ case "$choice" in
     Logout)
         uwsm stop
         ;;
-    "Restart to Windows")
+    "Windows")
         # If --boot-loader-menu is set to 0, it has an infinite timeout, which i dont want
         systemctl reboot --boot-loader-entry=auto-windows --boot-loader-menu=1
         ;;

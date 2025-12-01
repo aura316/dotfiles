@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
+# Script dir
+DIR=$(realpath "$(dirname "$0")/..")
+
 # Nvidia drivers and utils
 # https://wiki.archlinux.org/title/NVIDIA
 
-# Check if yay is installed
-if ! command -v yay 2>&1 >/dev/null
-then
-    echo "This script requires yay, please make sure it's installed."
-    exit 1
-fi
-
 echo "Installing NVidia drivers"
-yay -S --needed nvidia nvidia-settings nvidia-util egl-wayland libva-nvidia-driver
+sudo pacman -S --needed nvidia nvidia-utils egl-wayland libva-nvidia-driver
+
+ln -sfn $DIR/config/uwsm/env-nvidia ~/.config/uwsm/env
