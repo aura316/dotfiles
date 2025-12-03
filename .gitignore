@@ -1,3 +1,2 @@
-config/clipse/clipse.log
-config/clipse/tmp_files/
-config/clipse/clipboard_history.json
+# Ignore env, should be symlinked depending on GPU
+config/uwsm/env

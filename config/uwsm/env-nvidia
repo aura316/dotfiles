@@ -21,8 +21,6 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATIONS='1'
 ############# Others #############
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-## NVIDIA
-export GBM_BACKEND=nvidia-drm
+export NVD_BACKEND=direct
 export LIBVA_DRIVER_NAME=nvidia
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
-export NVD_BACKEND=direct
